@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, SafeAreaView, Pressable } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, SafeAreaView, Pressable, Dimensions } from 'react-native';
 
-
+const height = Dimensions.get("screen")
+const width = Dimensions.get("screen")
 
 export const Splash = ({ navigation }) => {
 
@@ -11,8 +12,7 @@ export const Splash = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={{ backgroundColor: '#26282C', }}>
-      <View style={{ height: '100%', }}>
+    <SafeAreaView style={{ backgroundColor: '#26282C', height:height,  width: width,}}>
         <StatusBar style="light" />
         <ImageBackground source={require('../assets/Images/image3.jpeg')}
           style={{
@@ -39,8 +39,6 @@ export const Splash = ({ navigation }) => {
 
         </View>
         {/* </LinearGradient> */}
-
-      </View>
 
     </SafeAreaView>
   );
