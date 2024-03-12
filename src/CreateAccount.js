@@ -7,6 +7,8 @@ export const CreateAccount = () => {
     return(
         <View>
             <Text>qwertyqwerty</Text>
+            <Text>qwertyqwerty</Text>
+            
         </View>
     )
 }
