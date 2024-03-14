@@ -1,0 +1,211 @@
+{
+    "altSpellings": [
+        "CY",
+        "Kýpros",
+        "Kıbrıs",
+        "Republic of Cyprus",
+        "Κυπριακή Δημοκρατία",
+        "Kıbrıs Cumhuriyeti"
+    ],
+    "area": 9251,
+    "capital": [
+        "Nicosia"
+    ],
+    "capitalInfo": {
+        "latlng": [
+            35.17,
+            33.37
+        ]
+    },
+    "car": {
+        "side": "left",
+        "signs": [
+            "CY"
+        ]
+    },
+    "cca2": "CY",
+    "cca3": "CYP",
+    "ccn3": "196",
+    "cioc": "CYP",
+    "coatOfArms": {
+        "png": "https://mainfacts.com/media/images/coats_of_arms/cy.png",
+        "svg": "https://mainfacts.com/media/images/coats_of_arms/cy.svg"
+    },
+    "continents": [
+        "Europe"
+    ],
+    "currencies": {
+        "EUR": {
+            "name": "Euro",
+            "symbol": "€"
+        }
+    },
+    "demonyms": {
+        "eng": {
+            "f": "Cypriot",
+            "m": "Cypriot"
+        },
+        "fra": {
+            "f": "Chypriote",
+            "m": "Chypriote"
+        }
+    },
+    "fifa": "CYP",
+    "flag": "🇨🇾",
+    "flags": {
+        "alt": "The flag of Cyprus has a white field, at the center of which is a copper-colored silhouette of the Island of Cyprus above two green olive branches crossed at the stem.",
+        "png": "https://flagcdn.com/w320/cy.png",
+        "svg": "https://flagcdn.com/cy.svg"
+    },
+    "gini": {
+        "2018": 32.7
+    },
+    "idd": {
+        "root": "+3",
+        "suffixes": [
+            "57"
+        ]
+    },
+    "independent": true,
+    "landlocked": false,
+    "languages": {
+        "ell": "Greek",
+        "tur": "Turkish"
+    },
+    "latlng": [
+        35,
+        33
+    ],
+    "maps": {
+        "googleMaps": "https://goo.gl/maps/77hPBRdLid8yD5Bm7",
+        "openStreetMaps": "https://www.openstreetmap.org/relation/307787"
+    },
+    "name": {
+        "common": "Cyprus",
+        "nativeName": {
+            "ell": [Object
+            ],
+            "tur": [Object
+            ]
+        },
+        "official": "Republic of Cyprus"
+    },
+    "population": 1207361,
+    "postalCode": {
+        "format": "####",
+        "regex": "^(\\d{4})$"
+    },
+    "region": "Europe",
+    "startOfWeek": "monday",
+    "status": "officially-assigned",
+    "subregion": "Southern Europe",
+    "timezones": [
+        "UTC+02:00"
+    ],
+    "tld": [
+        ".cy"
+    ],
+    "translations": {
+        "ara": {
+            "common": "قبرص",
+            "official": "جمهورية قبرص"
+        },
+        "bre": {
+            "common": "Kiprenez",
+            "official": "Republik Kiprenez"
+        },
+        "ces": {
+            "common": "Kypr",
+            "official": "Kyperská republika"
+        },
+        "cym": {
+            "common": "Cyprus",
+            "official": "Gweriniaeth Cyprus"
+        },
+        "deu": {
+            "common": "Zypern",
+            "official": "Republik Zypern"
+        },
+        "est": {
+            "common": "Küpros",
+            "official": "Küprose Vabariik"
+        },
+        "fin": {
+            "common": "Kypros",
+            "official": "Kyproksen tasavalta"
+        },
+        "fra": {
+            "common": "Chypre",
+            "official": "République de Chypre"
+        },
+        "hrv": {
+            "common": "Cipar",
+            "official": "Republika Cipar"
+        },
+        "hun": {
+            "common": "Ciprus",
+            "official": "Ciprusi Köztársaság"
+        },
+        "ita": {
+            "common": "Cipro",
+            "official": "Repubblica di Cipro"
+        },
+        "jpn": {
+            "common": "キプロス",
+            "official": "キプロス共和国"
+        },
+        "kor": {
+            "common": "키프로스",
+            "official": "키프로스 공화국"
+        },
+        "nld": {
+            "common": "Cyprus",
+            "official": "Republiek Cyprus"
+        },
+        "per": {
+            "common": "قِبرِس",
+            "official": "جمهوری قبرس"
+        },
+        "pol": {
+            "common": "Cypr",
+            "official": "Republika Cypryjska"
+        },
+        "por": {
+            "common": "Chipre",
+            "official": "República de Chipre"
+        },
+        "rus": {
+            "common": "Кипр",
+            "official": "Республика Кипр"
+        },
+        "slk": {
+            "common": "Cyprus",
+            "official": "Cyperská republika"
+        },
+        "spa": {
+            "common": "Chipre",
+            "official": "República de Chipre"
+        },
+        "srp": {
+            "common": "Кипар",
+            "official": "Кипарска Република"
+        },
+        "swe": {
+            "common": "Cypern",
+            "official": "Republiken Cypern"
+        },
+        "tur": {
+            "common": "Kıbrıs",
+            "official": "Kıbrıs Cumhuriyeti"
+        },
+        "urd": {
+            "common": "قبرص",
+            "official": "جمہوریہ قبرص"
+        },
+        "zho": {
+            "common": "塞浦路斯",
+            "official": "塞浦路斯共和国"
+        }
+    },
+    "unMember": true
+}

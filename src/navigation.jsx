@@ -6,6 +6,10 @@ import { Splash } from './Splash';
 import { GetStarted } from './GetStarted';
 import { SignIn } from './SignIn';
 import { CreateAccount } from './CreateAccount';
+import { Home } from './Home';
+import { Search } from './Search';
+
+
 const Stack = createNativeStackNavigator();
 
 export const MainNavigation = () => {
@@ -16,6 +20,8 @@ export const MainNavigation = () => {
     <Stack.Screen name="GetStarted" component={GetStarted}  options={{headerShown: false}}/>
     <Stack.Screen name="SignIn" component={SignIn}  options={{headerShown: false}}/>
     <Stack.Screen name="SignUp" component={CreateAccount}  options={{headerShown: false}}/>
+    <Stack.Screen name="Home" component={Home}  options={{headerShown: false}}/>
+    <Stack.Screen name="Search" component={Search}  options={{headerShown: false}}/>
     </Stack.Navigator>
  )
 }
