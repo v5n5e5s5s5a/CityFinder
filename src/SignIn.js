@@ -1,19 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, TouchableOpacity, StyleSheet, ImageBackground, View } from 'react-native';
 import { FirebaseaApp } from 'firebase/app';
 import { TextInput, Icon } from 'react-native-paper';
 import { firebaseaAuth } from '../FirebaseConfig';
 import FlashMessage from 'react-native-flash-message';
-import { sendPasswordResetEmail } from 'firebase/auth';
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import { showMessage } from 'react-native-flash-message';
+import { CommonActions } from '@react-navigation/native';
 
-export const SignIn = ({ navigation }) => {
+export const SignIn = ({ route, navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [security, setSecurity] = useState(true);
+
+    useEffect(() => {
+        const {email: routeEmail, password: routePassword} = route.params || {};
+        if (routeEmail && routePassword) {
+            setEmail(routeEmail);
+            setPassword(routePassword);
+        }
+     },[route.params]);
 
     const auth = firebaseaAuth;
 
@@ -45,10 +54,18 @@ export const SignIn = ({ navigation }) => {
                 const response = await signInWithEmailAndPassword(auth, email, password);
                 console.log(response);
                 console.log('You are now signed in');
+
+                navigation.dispatch(
+                    CommonActions.reset({
+                      index: 0,
+                      routes: [{ name: 'Home' }]
+                    })
+                  );
+                await AsyncStorage.setItem('user-data', JSON.stringify(data))
             } catch (error) {
                 console.log(error);
                 showMessage({
-                    message: error.code,
+                    message: 'incorrect',
                     type: 'danger',
                 });
             }
@@ -99,6 +116,11 @@ export const SignIn = ({ navigation }) => {
                 <View style={{ paddingHorizontal: 20, paddingBottom: 20 }}>
                     <Text style={{ color: 'white', paddingBottom: 10 }}>Email</Text>
                     <TextInput
+                        theme={{
+                            colors: {
+                                primary: '#ff0066'
+                            }
+                        }}
                         placeholder="Email Address"
                         color="gray"
                         error={!!emailError}
@@ -124,7 +146,7 @@ export const SignIn = ({ navigation }) => {
                     {passwordError ? <Text style={styles.error}>{passwordError}</Text> : null}
                 </View>
                 <View style={{ paddingHorizontal: 20 }}>
-                    <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+                    <TouchableOpacity>
                         <Text style={{ color: 'white', textAlign: 'right' }}>Forgot Password?</Text>
                     </TouchableOpacity>
                 </View>

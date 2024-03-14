@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { Text, TouchableOpacity, StyleSheet, ImageBackground, SafeAreaView, Dimensions, View } from 'react-native';
 import { FirebaseaApp } from 'firebase/app';
 import { TextInput, Icon } from 'react-native-paper';
@@ -74,8 +74,8 @@ export const CreateAccount = ({ navigation }) => {
 
                 console.log(response)
                 console.log('you are now signUp')
-                    navigation.navigate('SignIn', { email, password })
-                
+                navigation.navigate('SignIn', { email, password })
+
 
             }
 
@@ -128,6 +128,11 @@ export const CreateAccount = ({ navigation }) => {
                 <View style={{ paddingHorizontal: 20, paddingBottom: 20 }}>
                     <Text style={{ color: 'white', paddingBottom: 10 }}>Email</Text>
                     <TextInput
+                        theme={{
+                            colors: {
+                                primary: '#ff0066'
+                            }
+                        }}
                         placeholder="Email Address"
                         error={!!emailError}
                         onChangeText={setEmail}
@@ -138,6 +143,11 @@ export const CreateAccount = ({ navigation }) => {
                 <View style={{ paddingHorizontal: 20, paddingBottom: 20 }}>
                     <Text style={{ color: 'white', paddingBottom: 10 }}>Password</Text>
                     <TextInput
+                        theme={{
+                            colors: {
+                                primary: '#ff0066'
+                            }
+                        }}
                         placeholder="Password"
                         secureTextEntry={security}
                         value={password}
@@ -156,6 +166,11 @@ export const CreateAccount = ({ navigation }) => {
                 <View style={{ paddingHorizontal: 20, paddingBottom: 20 }}>
                     <Text style={{ color: 'white', paddingBottom: 10 }}>ConfirmPassword</Text>
                     <TextInput
+                        theme={{
+                            colors: {
+                                primary: '#ff0066'
+                            }
+                        }}
                         placeholder="ConfirmPassword"
                         secureTextEntry={security}
                         value={ConfirmPassword}
