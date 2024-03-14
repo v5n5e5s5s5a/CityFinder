@@ -1,5 +1,6 @@
+import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, SafeAreaView, Pressable, Dimensions } from 'react-native';
 
 const height = Dimensions.get("screen")
@@ -10,6 +11,14 @@ export const Splash = ({ navigation }) => {
   const handleGetStarted = () => {
     navigation.navigate('GetStarted');
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigation.replace('GetStarted')
+    }, 3000)
+
+    return () => clearTimeout(timer)
+  }, [navigation])
 
   return (
     <SafeAreaView style={{ backgroundColor: '#26282C', height:height,  width: width,}}>
@@ -43,34 +52,3 @@ export const Splash = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: 'black', 
-//   },
-//   row: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//   },
-//   button: {
-//     width: 50,
-//     height: 50,
-//     borderRadius: 10,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     marginRight: 10,
-//   },
-//   buttonText: {
-//     fontSize: 34,
-//     fontWeight: 'bold',
-//     color: 'black',
-//   },
-//   finderText: {
-//     fontSize: 44,
-//     fontWeight: 'bold',
-//     color: '#fff',
-//   },
-// });
