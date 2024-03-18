@@ -17,12 +17,12 @@ export const SignIn = ({ route, navigation }) => {
     const [security, setSecurity] = useState(true);
 
     useEffect(() => {
-        const {email: routeEmail, password: routePassword} = route.params || {};
+        const { email: routeEmail, password: routePassword } = route.params || {};
         if (routeEmail && routePassword) {
             setEmail(routeEmail);
             setPassword(routePassword);
         }
-     },[route.params]);
+    }, [route.params]);
 
     const auth = firebaseaAuth;
 
@@ -57,10 +57,10 @@ export const SignIn = ({ route, navigation }) => {
 
                 navigation.dispatch(
                     CommonActions.reset({
-                      index: 0,
-                      routes: [{ name: 'Home' }]
+                        index: 0,
+                        routes: [{ name: 'Home' }]
                     })
-                  );
+                );
                 await AsyncStorage.setItem('user-data', JSON.stringify(data))
             } catch (error) {
                 console.log(error);
@@ -118,7 +118,7 @@ export const SignIn = ({ route, navigation }) => {
                     <TextInput
                         theme={{
                             colors: {
-                                primary: '#ff0066'
+                                primary: '#ED5667'
                             }
                         }}
                         placeholder="Email Address"
@@ -132,6 +132,11 @@ export const SignIn = ({ route, navigation }) => {
                 <View style={{ paddingHorizontal: 20, paddingBottom: 20 }}>
                     <Text style={{ color: 'white', paddingBottom: 10 }}>Password</Text>
                     <TextInput
+                        theme={{
+                            colors: {
+                                primary: '#ED5667'
+                            }
+                        }}
                         placeholder="Password"
                         secureTextEntry={security}
                         value={password}
@@ -151,14 +156,14 @@ export const SignIn = ({ route, navigation }) => {
                     </TouchableOpacity>
                 </View>
                 <View style={{ paddingHorizontal: 20, paddingTop: 50, borderRadius: 5 }}>
-                    <TouchableOpacity style={{ backgroundColor: '#ff0066' }} onPress={handleSignIn}>
+                    <TouchableOpacity style={{ backgroundColor: '#ED5667' }} onPress={handleSignIn}>
                         <Text style={{ color: 'white', textAlign: 'center', fontSize: 25, padding: 10 }}>Login</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{ paddingHorizontal: 20, paddingTop: 70, display: 'flex', flexDirection: 'row', paddingLeft: 50 }}>
                     <Text style={{ color: 'white', fontSize: 18 }}>Don't have an account?</Text>
                     <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-                        <Text style={{ color: '#ff0066', fontSize: 18, textAlign: 'center' }}>Signup</Text>
+                        <Text style={{ color: '#ED5667', fontSize: 18, textAlign: 'center' }}>Signup</Text>
                     </TouchableOpacity>
                 </View>
             </View>

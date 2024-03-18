@@ -132,7 +132,7 @@ export const Search = ({ navigation }) => {
                                 </View>
                                 {searchedResult.length > 0 && (
                                     <MapView
-                                        style={{ width: width, height: 300 }}
+                                        style={{ width: width, height: 800 }}
                                         initialRegion={{
                                             ...mapRegion,
                                             latitude: searchedResult[0].latlng[0],

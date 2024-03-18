@@ -7,7 +7,10 @@ const width = Dimensions.get("screen")
 
 export const GetStarted = ({ navigation }) => {
 
-  const handleSignInScreen = () => {
+  const handleOnPressExplore = () => {
+    navigation.navigate('Home');
+  };
+  const handleOnPressSignIn = () => {
     navigation.navigate('SignIn');
   };
 
@@ -42,11 +45,12 @@ export const GetStarted = ({ navigation }) => {
 
           <View style={{height: 200,}}></View>
 
-          <TouchableOpacity style={{ backgroundColor: 'gold', paddingHorizontal: 20, paddingVertical: 10, borderRadius: 5, alignSelf: 'stretch', marginTop: 'auto', }} onPress={handleSignInScreen}>
-            <Text style={{ fontSize: 20, color: '#000000', textAlign: 'center', fontWeight: 'bold', }}>
-              Get Started
+          <TouchableOpacity style={{ backgroundColor: '#ED5667', paddingHorizontal: 20, paddingVertical: 10, borderRadius: 5, alignSelf: 'stretch', marginTop: 'auto', }} onPress={handleOnPressExplore}>
+            <Text style={{ fontSize: 20, color: 'white', textAlign: 'center', fontWeight: 'bold', }}>
+              Explore
             </Text>
           </TouchableOpacity>
+            <Text style={{color: '#ED5667', textAlign: 'center',}} onPress={handleOnPressSignIn}>SignIn</Text>
         </View>
       </View>
     </SafeAreaView>
