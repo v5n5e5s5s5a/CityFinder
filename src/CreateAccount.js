@@ -130,7 +130,7 @@ export const CreateAccount = ({ navigation }) => {
                     <TextInput
                         theme={{
                             colors: {
-                                primary: '#ff0066'
+                                primary: '#ED5667'
                             }
                         }}
                         placeholder="Email Address"
@@ -145,7 +145,7 @@ export const CreateAccount = ({ navigation }) => {
                     <TextInput
                         theme={{
                             colors: {
-                                primary: '#ff0066'
+                                primary: '#ED5667'
                             }
                         }}
                         placeholder="Password"
@@ -168,7 +168,7 @@ export const CreateAccount = ({ navigation }) => {
                     <TextInput
                         theme={{
                             colors: {
-                                primary: '#ff0066'
+                                primary: '#ED5667'
                             }
                         }}
                         placeholder="ConfirmPassword"
@@ -186,14 +186,14 @@ export const CreateAccount = ({ navigation }) => {
                 </View>
 
                 <View style={{ paddingHorizontal: 20, paddingTop: 50, borderRadius: 5 }}>
-                    <TouchableOpacity style={{ backgroundColor: "#ff0066" }} onPress={handleSignUp}>
+                    <TouchableOpacity style={{ backgroundColor: "#ED5667" }} onPress={handleSignUp}>
                         <Text style={{ color: 'white', textAlign: 'center', fontSize: 25, padding: 10 }}>Signup</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{ paddingHorizontal: 20, paddingTop: 70, display: 'flex', flexDirection: 'row', paddingLeft: 50 }}>
                     <Text style={{ color: 'white', textAlign: 'center', fontSize: 18 }}>Already have an account!</Text>
                     <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-                        <Text style={{ color: "#ff0066", fontSize: 18, textAlign: 'center' }}>Login</Text>
+                        <Text style={{ color: "#ED5667", fontSize: 18, textAlign: 'center' }}>Login</Text>
                     </TouchableOpacity>
                 </View>
             </View>

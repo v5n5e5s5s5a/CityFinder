@@ -4,7 +4,7 @@ import { HomeCard } from "./Components/HomeCard";
 import { StatusBar } from "expo-status-bar";
 import Fontisto from "react-native-vector-icons/Fontisto";
 
-export const Home = () => {
+export const Home = ({navigation}) => {
 
     const [country, setCountry] = useState([]);
 
@@ -31,12 +31,16 @@ export const Home = () => {
         console.log('These are the countries', country[0]);
     }, [country]);
 
+   const handleOnPressCountry = ((countryData) => { 
+        navigation.navigate('Details', {countryData: countryData})
+    })
+
     return (
         <SafeAreaView style={{ backgroundColor: '#2A2C32',}}>
             <StatusBar style="light"/>
             <View style={{backgroundColor: 'black', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 25, paddingTop: 50, paddingBottom: 20, alignItems: 'center',}}>
-                <Text style={{color: 'white', fontSize: 30,}}>FindMyCity</Text>
-                <Fontisto name="bell" style={{ color: 'gray', fontSize: 30 }} />
+                <Text style={{color: 'white', fontSize: 30,}}>FindMyCountry</Text>
+                <Fontisto name="search" style={{ color: 'gray', fontSize: 30 }} onPress={() => {navigation.navigate('Search')}} />
             </View>
 
             <ScrollView contentContainerStyle={{display: 'flex', flexDirection: 'column', gap: 15, paddingHorizontal: 25, backgroundColor: '#2A2C32', paddingTop: 20,}}>
@@ -45,7 +49,7 @@ export const Home = () => {
                 <HomeCard
                     key={index}
                     countryImage={countryData}
-
+                    onPressCountry={() => { handleOnPressCountry(countryData) }}
                 />
             ))}
           
