@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import Fontisto from "react-native-vector-icons/Fontisto";
 
 export const Home = ({navigation}) => {
+    
 
     const [country, setCountry] = useState([]);
 
