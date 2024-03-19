@@ -63,7 +63,7 @@ function TabNavigator() {
        headerShown: false,
       })}
   >
-    <Tab.Screen name="Home" component={Home}  options={{tabBarShowLabel:false}}/>
+    <Tab.Screen name="Home1" component={Home}  options={{tabBarShowLabel:false}}/>
     <Tab.Screen name="Search" component={Search}  options={{tabBarShowLabel:false}} />
     <Tab.Screen name="Profile" component={Profile}  options={{tabBarShowLabel:false}} />
   </Tab.Navigator>
