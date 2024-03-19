@@ -55,11 +55,12 @@ function TabNavigator() {
           
           return <Feather name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#D9BE52',
+        tabBarActiveTintColor: 'black',
         tabBarInactiveTintColor: '#CACCCE',
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: '#FC2469',
+          borderTopColor: '#FC2469',
         },
        headerShown: false,
       })}
