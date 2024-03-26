@@ -8,6 +8,8 @@ import FlashMessage from 'react-native-flash-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { showMessage, hideMessage } from "react-native-flash-message";
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
+
 
 
 export const CreateAccount = ({ navigation }) => {
@@ -19,6 +21,8 @@ export const CreateAccount = ({ navigation }) => {
     const [passwordError, setPasswordError] = useState('')
     const [ConfirmPasswordError, setConfirmPasswordError] = useState('')
 
+    //Firestore initialize:
+    const firestore = getFirestore();
 
     const [security, setSecurity] = useState(true)
 
@@ -70,10 +74,17 @@ export const CreateAccount = ({ navigation }) => {
 
 
             try {
-                const response = await createUserWithEmailAndPassword(auth, email, password)
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password)
 
-                console.log(response)
+                console.log(userCredential)
                 console.log('you are now signUp')
+
+                 // Save user data to Firestore
+             await setDoc(doc(firestore, 'users', userCredential.user.uid), {
+               email: userCredential.user.email,
+              createdAt: new Date()
+                }); 
+
                 navigation.navigate('SignIn', { email, password })
 
 
@@ -98,10 +109,6 @@ export const CreateAccount = ({ navigation }) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
         return emailRegex.test(email)
     }
-
-
-
-
 
     return (
         <View>

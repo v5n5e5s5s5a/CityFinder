@@ -11,6 +11,7 @@ import { CreateAccount } from './CreateAccount';
 import { Home } from './Home';
 import { Search } from './Search';
 import { Profile } from './Profile';
+import Details from './Details';
 
 
 const Stack = createNativeStackNavigator();
@@ -23,7 +24,7 @@ export const MainNavigation = () => {
     <Stack.Screen name="GetStarted" component={GetStarted}  options={{headerShown: false}}/>
     <Stack.Screen name="SignIn" component={SignIn}  options={{headerShown: false}}/>
     <Stack.Screen name="SignUp" component={CreateAccount}  options={{headerShown: false}}/>
-    
+    <Stack.Screen name="Details" component={Details}  options={{headerShown: false}}/>
     {/* <Stack.Screen name="Home" component={Home}  options={{headerShown: false}}/>
      */}
     <Stack.Screen name="Search" component={Search}  options={{headerShown: false}}/>
@@ -63,7 +64,7 @@ function TabNavigator() {
        headerShown: false,
       })}
   >
-    <Tab.Screen name="Home1" component={Home}  options={{tabBarShowLabel:false}}/>
+    <Tab.Screen name="Home" component={Home}  options={{tabBarShowLabel:false}}/>
     <Tab.Screen name="Search" component={Search}  options={{tabBarShowLabel:false}} />
     <Tab.Screen name="Profile" component={Profile}  options={{tabBarShowLabel:false}} />
   </Tab.Navigator>

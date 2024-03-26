@@ -8,6 +8,7 @@ import FlashMessage from 'react-native-flash-message';
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import { showMessage } from 'react-native-flash-message';
 import { CommonActions } from '@react-navigation/native';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
 export const SignIn = ({ route, navigation }) => {
     const [email, setEmail] = useState('');
@@ -15,6 +16,11 @@ export const SignIn = ({ route, navigation }) => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [security, setSecurity] = useState(true);
+
+// Firestore initialize:
+const firestore = getFirestore();
+
+
 
     useEffect(() => {
         const { email: routeEmail, password: routePassword } = route.params || {};
@@ -51,9 +57,15 @@ export const SignIn = ({ route, navigation }) => {
     const handleSignIn = async () => {
         if (validateForm()) {
             try {
-                const response = await signInWithEmailAndPassword(auth, email, password);
-                console.log(response);
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                console.log(userCredential);
                 console.log('You are now signed in');
+                  
+                // Save user data to Firestore
+             await setDoc(doc(firestore, 'users', userCredential.user.uid), {
+                 email: userCredential.user.email,
+                lastLogin: new Date()
+                });
 
                 navigation.dispatch(
                     CommonActions.reset({
@@ -61,7 +73,7 @@ export const SignIn = ({ route, navigation }) => {
                         routes: [{ name: 'Home' }]
                     })
                 );
-                await AsyncStorage.setItem('user-data', JSON.stringify(data))
+                await AsyncStorage.setItem('user-data', JSON.stringify(userCredential.user))
             } catch (error) {
                 console.log(error);
                 showMessage({
@@ -92,6 +104,21 @@ export const SignIn = ({ route, navigation }) => {
             });
         }
     };
+
+
+ // Function to save user data to Firestore
+ const saveUserDataToFirestore = async (user) => {
+    try {
+      await setDoc(doc(firestore, 'users', user.uid), {
+        email: user.email,
+        lastLoggedIn: new Date()
+      });
+      console.log('User data saved to Firestore');
+    } catch (error) {
+      console.error('Error saving user data to Firestore', error);
+    }
+  };
+
 
     return (
         <View>
