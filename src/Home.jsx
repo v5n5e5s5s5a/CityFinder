@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, Pressable, Dimensions, SafeAreaView, Imag
 import { HomeCard } from "./Components/HomeCard";
 import { StatusBar } from "expo-status-bar";
 import Fontisto from "react-native-vector-icons/Fontisto";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const Home = ({navigation}) => {
     
@@ -18,7 +19,7 @@ export const Home = ({navigation}) => {
         fetch("https://restcountries.com/v3.1/all")
             .then(response => response.json())
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 setCountry(response)
             })
             .catch(error => console.log('error', error));
@@ -29,12 +30,22 @@ export const Home = ({navigation}) => {
     }, [])
 
     useEffect(() => {
-        console.log('These are the countries', country[0]);
+        // console.log('These are the countries', country[0]);
     }, [country]);
 
-   const handleOnPressCountry = ((countryData) => { 
+   const handleOnPressCountry = (countryData) => { 
+    // console.log("these are countryData from Home:", countryData);
         navigation.navigate('Details', {countryData: countryData})
-    })
+    }
+
+    const getData = async () => {
+        let data = await AsyncStorage.getItem('user-data')
+        console.log(data);
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
 
     return (
         <SafeAreaView style={{ backgroundColor: '#2A2C32',}}>
