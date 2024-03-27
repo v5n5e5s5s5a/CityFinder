@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Text, TouchableOpacity, StyleSheet, ImageBackground, View } from 'react-native';
 import { FirebaseaApp } from 'firebase/app';
 import { TextInput, Icon } from 'react-native-paper';
@@ -8,9 +8,10 @@ import FlashMessage from 'react-native-flash-message';
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import { showMessage } from 'react-native-flash-message';
 import { CommonActions } from '@react-navigation/native';
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
 export const SignIn = ({ route, navigation }) => {
+    const { handleSignIn, isLoggedIn } = useContext(ChangeIntoDarkModa)
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -53,19 +54,16 @@ const firestore = getFirestore();
         }
         return valid;
     };
-
-    const handleSignIn = async () => {
+    const data = {
+        email: email,
+        password: password,
+    }
+    const handleSubmit = async () => {
         if (validateForm()) {
             try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                console.log(userCredential);
+                const response = await signInWithEmailAndPassword(auth, email, password);
+                console.log(response);
                 console.log('You are now signed in');
-                  
-                // Save user data to Firestore
-             await setDoc(doc(firestore, 'users', userCredential.user.uid), {
-                 email: userCredential.user.email,
-                lastLogin: new Date()
-                });
 
                 navigation.dispatch(
                     CommonActions.reset({
@@ -73,7 +71,7 @@ const firestore = getFirestore();
                         routes: [{ name: 'Home' }]
                     })
                 );
-                await AsyncStorage.setItem('user-data', JSON.stringify(userCredential.user))
+                await AsyncStorage.setItem('user-data', JSON.stringify(data))
             } catch (error) {
                 console.log(error);
                 showMessage({
@@ -81,8 +79,9 @@ const firestore = getFirestore();
                     type: 'danger',
                 });
             }
+
         }
-    };
+    }
 
     const isValidEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -183,7 +182,7 @@ const firestore = getFirestore();
                     </TouchableOpacity>
                 </View>
                 <View style={{ paddingHorizontal: 20, paddingTop: 50, borderRadius: 5 }}>
-                    <TouchableOpacity style={{ backgroundColor: '#ED5667' }} onPress={handleSignIn}>
+                    <TouchableOpacity style={{ backgroundColor: '#ED5667' }} onPress={handleSubmit}>
                         <Text style={{ color: 'white', textAlign: 'center', fontSize: 25, padding: 10 }}>Login</Text>
                     </TouchableOpacity>
                 </View>

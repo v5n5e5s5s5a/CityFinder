@@ -11,7 +11,6 @@ import { CreateAccount } from './CreateAccount';
 import { Home } from './Home';
 import { Search } from './Search';
 import { Profile } from './Profile';
-import Details from './Details';
 
 
 const Stack = createNativeStackNavigator();
@@ -24,11 +23,12 @@ export const MainNavigation = () => {
     <Stack.Screen name="GetStarted" component={GetStarted}  options={{headerShown: false}}/>
     <Stack.Screen name="SignIn" component={SignIn}  options={{headerShown: false}}/>
     <Stack.Screen name="SignUp" component={CreateAccount}  options={{headerShown: false}}/>
-    <Stack.Screen name="Details" component={Details}  options={{headerShown: false}}/>
+    
     {/* <Stack.Screen name="Home" component={Home}  options={{headerShown: false}}/>
      */}
-    <Stack.Screen name="Search" component={Search}  options={{headerShown: false}}/>
-     <Stack.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
+    <Stack.Screen name="Search" component={TabNavigator}  options={{headerShown: false}}/>
+    <Stack.Screen name="Home" component={TabNavigator}  options={{headerShown: false}}/>
+    <Stack.Screen name="Profile" component={TabNavigator} options={{ headerShown: false }} />
   
     
     </Stack.Navigator>
@@ -44,29 +44,30 @@ function TabNavigator() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === 'Home') {
+          if (route.name === 'Home1') {
             iconName = 'home';
-          } else if (route.name === 'Search') {
+          } else if (route.name === 'Search1') {
             iconName = 'search';
-          } else if (route.name === 'Profile') {
+          } else if (route.name === 'Profile1') {
             iconName = 'user';
           }
 
           
           return <Feather name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#D9BE52',
-        tabBarInactiveTintColor: '#CACCCE',
+        tabBarActiveTintColor: 'black',
+        tabBarInactiveTintColor: 'rgba(242, 210, 189, 0.7)',
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: '#FC2469',
+          backgroundColor: '#FC2469', 
+          borderTopColor: '#FC2469',
         },
        headerShown: false,
       })}
   >
-    <Tab.Screen name="Home" component={Home}  options={{tabBarShowLabel:false}}/>
-    <Tab.Screen name="Search" component={Search}  options={{tabBarShowLabel:false}} />
-    <Tab.Screen name="Profile" component={Profile}  options={{tabBarShowLabel:false}} />
+    <Tab.Screen name="Home1" component={Home}  options={{tabBarShowLabel:false}}/>
+    <Tab.Screen name="Search1" component={Search}  options={{tabBarShowLabel:false}} />
+    <Tab.Screen name="Profile1" component={Profile}  options={{tabBarShowLabel:false}} />
   </Tab.Navigator>
   );
 }
