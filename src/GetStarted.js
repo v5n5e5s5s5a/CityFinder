@@ -50,7 +50,7 @@ export const GetStarted = ({ navigation }) => {
               Explore
             </Text>
           </TouchableOpacity>
-            <Text style={{color: '#ED5667', textAlign: 'center',}} onPress={handleOnPressSignIn}>SignIn</Text>
+            <Text style={{color: '#FC2469', textAlign: 'center',}} onPress={handleOnPressSignIn}>SignIn</Text>
         </View>
       </View>
     </SafeAreaView>
@@ -58,38 +58,4 @@ export const GetStarted = ({ navigation }) => {
   );
 };
 
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-    resizeMode: 'cover',
-  },
-
-  title: {
-
-
-  },
-  subtitle: {
-
-
-  },
-  button: {
-
-  },
-  buttonText: {
-
-  },
-  backButton: {
-    postion: 'absolute',
-    alignSelf: 'flex-start',
-    marginTop: 20,
-
-  },
-  backButtonText: {
-    fontSize: 24,
-    color: '#FFFFFF',
-  },
-});
 
