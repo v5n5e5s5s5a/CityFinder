@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Text, TouchableOpacity, StyleSheet, ImageBackground, View } from 'react-native';
 import { FirebaseaApp } from 'firebase/app';
 import { TextInput, Icon } from 'react-native-paper';
@@ -8,8 +8,12 @@ import FlashMessage from 'react-native-flash-message';
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import { showMessage } from 'react-native-flash-message';
 import { CommonActions } from '@react-navigation/native';
+import { ChangeIntoDarkModa, ThemeProviderIntoDarkModa } from './Theme/ThemeContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const SignIn = ({ route, navigation }) => {
+    const { handleSignIn, isLoggedIn } = useContext(ChangeIntoDarkModa)
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -47,30 +51,25 @@ export const SignIn = ({ route, navigation }) => {
         }
         return valid;
     };
-
-    const handleSignIn = async () => {
+    const data = {
+        email: email,
+        password: password,
+    }
+    const handleSubmit = async () => {
         if (validateForm()) {
-            try {
-                const response = await signInWithEmailAndPassword(auth, email, password);
-                console.log(response);
-                console.log('You are now signed in');
-
+            handleSignIn(email, password)
+            if (isLoggedIn === true) {
+                await AsyncStorage.setItem('user-data', JSON.stringify(data))
                 navigation.dispatch(
                     CommonActions.reset({
                         index: 0,
                         routes: [{ name: 'Home' }]
                     })
                 );
-                await AsyncStorage.setItem('user-data', JSON.stringify(data))
-            } catch (error) {
-                console.log(error);
-                showMessage({
-                    message: 'incorrect',
-                    type: 'danger',
-                });
             }
+
         }
-    };
+    }
 
     const isValidEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -156,7 +155,7 @@ export const SignIn = ({ route, navigation }) => {
                     </TouchableOpacity>
                 </View>
                 <View style={{ paddingHorizontal: 20, paddingTop: 50, borderRadius: 5 }}>
-                    <TouchableOpacity style={{ backgroundColor: '#ED5667' }} onPress={handleSignIn}>
+                    <TouchableOpacity style={{ backgroundColor: '#ED5667' }} onPress={handleSubmit}>
                         <Text style={{ color: 'white', textAlign: 'center', fontSize: 25, padding: 10 }}>Login</Text>
                     </TouchableOpacity>
                 </View>
