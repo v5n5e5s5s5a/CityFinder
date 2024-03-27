@@ -82,6 +82,11 @@ export const Search = ({ navigation }) => {
         setInitialSearchStatus(false);
     };
 
+    const handleOnPressCountry = (countryData) => {
+        console.log("these are countryData from Search:", countryData);
+        navigation.navigate('Details', { countryData: countryData })
+    }
+
     return (
         <SafeAreaView>
             <StatusBar style="light" />
@@ -119,20 +124,24 @@ export const Search = ({ navigation }) => {
                                     <HomeCard
                                         key={index}
                                         countryImage={countryData}
-
+                                        onPressCountry={() => { handleOnPressCountry(countryData) }}
                                     />
                                 ))}
                             </View>
                         ) : (
                             <>
                                 <View>
-                                    {searchedResult.map((searchedCountry, index) => (
-                                        <HomeCard key={index} countryImage={searchedCountry} />
+                                    {searchedResult.map((countryData, index) => (
+                                        <HomeCard
+                                            key={index}
+                                            countryImage={countryData}
+                                            onPressCountry={() => { handleOnPressCountry(countryData) }}
+                                        />
                                     ))}
                                 </View>
                                 {searchedResult.length > 0 && (
                                     <MapView
-                                        style={{ width: width, height: 800 }}
+                                        style={{ width: width, height: 300 }}
                                         initialRegion={{
                                             ...mapRegion,
                                             latitude: searchedResult[0].latlng[0],
